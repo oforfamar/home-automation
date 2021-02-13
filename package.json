@@ -2,7 +2,7 @@
   "name": "home-automation",
   "version": "0.0.1",
   "description": "react + nodejs for my home automation",
-  "main": "index.js",
+  "main": "/dist/index.js",
   "scripts": {
     "test": "test"
   },
