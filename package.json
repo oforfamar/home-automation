@@ -1,0 +1,29 @@
+{
+  "name": "home-automation",
+  "version": "0.0.1",
+  "description": "react + nodejs for my home automation",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oforfamar/home-automation.git"
+  },
+  "keywords": [
+    "nodejs",
+    "react",
+    "zigbeemqtt",
+    "mqtt",
+    "iot"
+  ],
+  "author": "Tudor Roman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oforfamar/home-automation/issues"
+  },
+  "homepage": "https://github.com/oforfamar/home-automation#readme",
+  "dependencies": {
+    "mqtt": "^4.2.6"
+  }
+}
