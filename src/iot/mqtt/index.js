@@ -6,14 +6,14 @@ const printDevices = () => {
   client.publish(`${process.env.TOPIC_NAME}/bridge/devices`);
 };
 
-client.on('connect', () => {
-  console.log('Connected to the Zigbee Network');
+export const connect = async () => {
+  client = await mqtt.connectAsync(process.env.MQTT_HOST);
 
-  printDevices();
-});
-
-export const connect = () => {
-  client = mqtt.connect(process.env.MQTT_HOST);
+  client.on('connect', () => {
+    console.log('Connected to the Zigbee Network');
+  
+    printDevices();
+  });
 };
 
 export default client;
