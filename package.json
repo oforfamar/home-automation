@@ -25,15 +25,15 @@
   },
   "homepage": "https://github.com/oforfamar/home-automation#readme",
   "dependencies": {
+    "@babel/runtime": "^7.13.10",
     "async-mqtt": "^2.6.1",
-    "core-js": "^3.9.1",
     "dotenv": "^8.2.0",
-    "mqtt": "^4.2.6",
-    "regenerator-runtime": "^0.13.7"
+    "mqtt": "^4.2.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.10",
+    "@babel/plugin-transform-runtime": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
     "@babel/register": "^7.13.8",
     "babel-loader": "^8.2.2",
