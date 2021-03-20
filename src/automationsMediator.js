@@ -9,5 +9,6 @@ const initWallSwitches = () => {
 }
 
 export const init = () => {
+  console.log({path: 'automationMediator'});
   initWallSwitches();
 }

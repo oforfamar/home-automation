@@ -5,6 +5,7 @@ export default class WirelessWallSwitchDouble {
   connectedDevices = {};
 
   constructor(friendlyName) {
+    console.log({path: 'WirelessWallSwitchDouble'});
     this.name = friendlyName;
 
     this.initOnMessage();
