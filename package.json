@@ -1,10 +1,12 @@
 {
   "name": "home-automation",
   "version": "0.0.1",
-  "description": "react + nodejs for my home automation",
-  "main": "/dist/index.js",
+  "description": "nodejs application for my home automation",
+  "main": "/dist/bundle.js",
   "scripts": {
-    "test": "test"
+    "build": "webpack",
+    "build:watch": "webpack --watch",
+    "start": "node dist/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -12,7 +14,6 @@
   },
   "keywords": [
     "nodejs",
-    "react",
     "zigbeemqtt",
     "mqtt",
     "iot"
@@ -24,6 +25,22 @@
   },
   "homepage": "https://github.com/oforfamar/home-automation#readme",
   "dependencies": {
+    "async-mqtt": "^2.6.1",
+    "dotenv": "^8.2.0",
     "mqtt": "^4.2.6"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "@babel/register": "^7.13.8",
+    "babel-loader": "^8.2.2",
+    "babel-register": "^6.26.0",
+    "webpack": "^5.27.0",
+    "webpack-cli": "^4.5.0"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.3",
+    "utf-8-validate": "^5.0.4"
   }
 }
