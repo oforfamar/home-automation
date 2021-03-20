@@ -26,6 +26,8 @@ export default class WirelessWallSwitchDouble {
   }
 
   initOnMessage() {
+    console.log(client);
+    return;
     client.on('message', (topic, message) => {
       console.log({topic});
       if (topic !== getSubscribeTopic(this.name)) {
