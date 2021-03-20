@@ -23,6 +23,10 @@ export default class WirelessWallSwitchDouble {
   }
 
   add({ action, device }) {
+    if (!(action in this.connectedDevices)) {
+      this.connectedDevices[action] = [];
+    }
+
     this.connectedDevices[action].push(device);
   }
 
