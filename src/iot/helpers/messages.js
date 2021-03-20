@@ -1,2 +1,2 @@
-export const TURN_ON = JSON.stringify({ state: 'on' });
-export const TURN_OFF = JSON.stringify({ state: 'off' });
+export const STATE = JSON.stringify({ state: '' });
+export const TOGGLE_LIGHTBULB = JSON.stringify({ state: 'toggle', 'transition': 0 });

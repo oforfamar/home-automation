@@ -1,0 +1,31 @@
+{
+  "0x00158d0005447e5e": {
+      "voltage": 3015,
+      "battery": 100,
+      "contact": true
+  },
+  "0x00158d00044ec153": {
+      "voltage": 3075,
+      "battery": 100,
+      "name": "Hall Wireless Switch"
+  },
+  "0x00158d00036c929a": {
+      "state": "OFF",
+      "power": 0,
+      "consumption": 0.98,
+      "energy": 0.98,
+      "temperature": 28
+  },
+  "0x00158d0004111517": {
+      "state": "OFF",
+      "brightness": 254,
+      "color_temp": 153,
+      "name": "Hall Light Bulb"
+  },
+  "0x00158d0004112f7b": {
+      "state": "OFF",
+      "brightness": 255,
+      "color_temp": 153,
+      "name": "Kitchen Light Bulb"
+  }
+}
