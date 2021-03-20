@@ -3,7 +3,7 @@ import mqtt from 'async-mqtt';
 let client;
 
 const printDevices = () => {
-  client.publish(`${process.env.TOPIC_NAME}/bridge/devices`);
+  client.publish(`${process.env.TOPIC_NAME}/bridge/devices`, '');
 };
 
 export const connect = async () => {
