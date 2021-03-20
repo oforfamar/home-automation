@@ -2,8 +2,8 @@ import mqtt from 'async-mqtt';
 
 let client;
 
-const printDevices = async () => {
-  await client.publish(`${process.env.TOPIC_NAME}/bridge/devices`);
+const printDevices = () => {
+  client.publish(`${process.env.TOPIC_NAME}/bridge/devices`);
 };
 
 export const connect = async () => {
@@ -14,7 +14,7 @@ export const connect = async () => {
   client.on('connect', () => {
     console.log('Connected to the Zigbee Network');
   
-    await printDevices();
+    printDevices();
   });
 };
 
