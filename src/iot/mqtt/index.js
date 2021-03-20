@@ -9,13 +9,9 @@ const printDevices = () => {
 export const connect = async () => {
   client = await mqtt.connectAsync(process.env.MQTT_HOST);
 
-  console.log(client);
+  console.log('Connected to the Zigbee Network');
 
-  client.on('connect', () => {
-    console.log('Connected to the Zigbee Network');
-  
-    printDevices();
-  });
+  printDevices();
 };
 
 export default client;
