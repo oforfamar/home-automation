@@ -26,7 +26,7 @@ export default class WirelessWallSwitchDouble {
   }
 
   initOnMessage() {
-    console.log(client);
+    console.log({path:'wirelessWallSwitchDouble', client});
     return;
     client.on('message', (topic, message) => {
       console.log({topic});
