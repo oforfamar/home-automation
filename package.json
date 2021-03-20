@@ -26,8 +26,10 @@
   "homepage": "https://github.com/oforfamar/home-automation#readme",
   "dependencies": {
     "async-mqtt": "^2.6.1",
+    "core-js": "^3.9.1",
     "dotenv": "^8.2.0",
-    "mqtt": "^4.2.6"
+    "mqtt": "^4.2.6",
+    "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
