@@ -4,5 +4,14 @@ import LedBulb from './iot/devices/xiaomi/ledBulb';
 
 dotenv.config({ path: `${__dirname}/../.env` });
 
-const hallLight = new LedBulb(mqttClient);
+(async () => {
+  const hallLight = new LedBulb('0x00158d0004111517');
 
+  hallLight.logClient();
+
+  await hallLight.turnOn();
+
+  setTimeout(() => {
+    hallLight.turnOff();
+  }, 2000);
+})();
