@@ -8,4 +8,4 @@ export const connect = async () => {
   console.log('Connected to the Zigbee Network');
 };
 
-export default client;
+export default (() => client)();
