@@ -2,11 +2,11 @@ import dotenv from 'dotenv';
 import { connect } from './iot/mqtt';
 import { init } from './automationsMediator';
 
-dotenv.config({ path: `${__dirname}/../.env` });
+dotenv.config({ path: `${__dirname}/.env` });
 
 (async () => {
-  console.log({path: 'index.js'});
-  await connect();
+  console.log(`Starting the application`);
+  const client = await connect();
 
-  init();
+  init(client);
 })();
