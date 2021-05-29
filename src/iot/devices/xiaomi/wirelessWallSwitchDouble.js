@@ -4,7 +4,7 @@ export default class WirelessWallSwitchDouble {
   connectedDevices = {};
 
   constructor(friendlyName, client) {
-    console.log(`Init WirelessWallSwitchDouble`);
+    console.log(`Init WirelessWallSwitchDouble - ${friendlyName}`);
 
     this.name = friendlyName;
     this.client = client;
@@ -16,7 +16,9 @@ export default class WirelessWallSwitchDouble {
     const topic = getSubscribeTopic(this.name);
 
     try {
-      console.log(`Subscribing to topic: ${topic} for WirelessWallSwitchDouble`);
+      console.log(
+        `Subscribing to topic: ${topic} for WirelessWallSwitchDouble`
+      );
 
       await this.client.subscribe(topic);
 
@@ -36,13 +38,15 @@ export default class WirelessWallSwitchDouble {
   }
 
   initOnMessage() {
+    const friendlyName = this.friendlyName;
+
     this.client.on('message', (topic, message) => {
       if (topic !== getSubscribeTopic(this.name)) {
         return;
       }
 
       const parsedMessage = JSON.parse(message.toString());
-      console.log(`WirelessWallSwitchDouble received message: ${message.toString()}`);
+      console.log(`${friendlyName} received message: ${message.toString()}`);
 
       const { action } = parsedMessage;
       if (!(action in this.connectedDevices)) {
@@ -56,4 +60,4 @@ export default class WirelessWallSwitchDouble {
       }
     });
   }
-};
+}
