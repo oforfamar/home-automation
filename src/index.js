@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import { connect } from './iot/mqtt';
-import { init } from './automationsMediator';
+import { init } from './mediators/automationsMediator';
 
 dotenv.config({ path: `${__dirname}/.env` });
 
