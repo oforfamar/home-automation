@@ -1,6 +1,6 @@
 {
   "name": "home-automation",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "nodejs application for my home automation",
   "main": "/dist/bundle.js",
   "scripts": {
