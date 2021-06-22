@@ -18,10 +18,11 @@ export const initKitchenAndHall = (client) => {
 
   const kitchenPowerPlug = new PowerPlug('0x00158d00036c929a', client);
 
-  const hallWallSwitch = new WirelessWallSwitchDouble(
-    '0x00158d00044ec153',
+  const hallWallSwitch = new WirelessWallSwitchDouble({
+    deviceName: '0x00158d00044ec153',
+    friendlyName: 'Hall switch',
     client
-  );
+  });
   hallWallSwitch.add({ action: constants.LEFT, device: hallLight });
   hallWallSwitch.add({ action: constants.RIGHT, device: kitchenLight });
   hallWallSwitch.add({

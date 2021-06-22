@@ -1,6 +1,7 @@
 import * as constants from '../../iot/helpers/constants';
 import LightBulb from '../../iot/devices/xiaomi/lightBulb';
 import WirelessWallSwitchDouble from '../../iot/devices/xiaomi/wirelessWallSwitchDouble';
+import WirelessRelay from '../../iot/devices/xiaomi/wirelessRelay';
 
 export const initLivingRoom = (client) => {
   const livingroomLight1 = new LightBulb({
@@ -15,10 +16,17 @@ export const initLivingRoom = (client) => {
     client
   });
 
-  const livingroomWallSwitch = new WirelessWallSwitchDouble(
-    '0x00158d0004849ce3',
+  const livingroomWallSwitch = new WirelessWallSwitchDouble({
+    deviceName: '0x00158d0004849ce3',
+    friendlyName: 'Livingroom switch',
     client
-  );
+  });
+
+  const deskLampRelay = new WirelessRelay({
+    deviceName: '0x00158d00042866b7',
+    friendlyName: 'Livingroom desk lamp',
+    client
+  });
 
   livingroomWallSwitch.add({
     action: constants.LEFT,
@@ -27,5 +35,9 @@ export const initLivingRoom = (client) => {
   livingroomWallSwitch.add({
     action: constants.LEFT,
     device: livingroomLight2
+  });
+  livingroomWallSwitch.add({
+    action: constants.RIGHT,
+    device: deskLampRelay
   });
 };

@@ -1,9 +1,13 @@
-import { getPublishTopicSet, getSubscribeTopic } from '../../helpers/topics';
 import {
-  TOGGLE_LIGHTBULB,
+  getPublishTopicGet,
+  getPublishTopicSet,
+  getSubscribeTopic
+} from '../../helpers/topics';
+import {
   TOGGLE_BRIGHTNESS,
   TURN_ON_LIGHTBULB,
-  TURN_OFF_LIGHTBULB
+  TURN_OFF_LIGHTBULB,
+  STATE
 } from '../../helpers/messages';
 
 export default class LightBulb {
@@ -26,22 +30,45 @@ export default class LightBulb {
       );
 
       await this.client.subscribe(topic);
+
+      this.initOnMessage();
+      await this.getDeviceState();
     } catch (error) {
       console.log(`Failed to subscribe to mqtt topic: ${topic}`);
       console.log(error);
     }
   }
 
-  async toggle() {
+  initOnMessage() {
+    this.client.on('message', (topic, message) => {
+      if (topic !== getSubscribeTopic(this.deviceName)) {
+        return;
+      }
+
+      const parsedMessage = JSON.parse(message.toString());
+
+      this.brightness = parsedMessage.brightness;
+      this.state = parsedMessage.state;
+      this.colorTemp = parsedMessage.color_temp;
+    });
+  }
+
+  async getDeviceState() {
     try {
-      const topic = getPublishTopicSet(this.deviceName);
-      console.log(
-        `Sending message ${TOGGLE_LIGHTBULB} to ${this.friendlyName} using topic ${topic}`
-      );
-      await this.client.publish(topic, TOGGLE_LIGHTBULB);
+      const topic = getPublishTopicGet(this.deviceName);
+      await this.client.publish(topic, STATE);
     } catch (error) {
-      console.log('Unable to toggle the light', error);
+      console.log(`Unable to get ${this.friendlyName} device state`, error);
     }
+  }
+
+  toggle() {
+    if (this.state === 'ON') {
+      this.turnOff();
+      return;
+    }
+
+    this.turnOn();
   }
 
   async turnOn() {
@@ -51,6 +78,8 @@ export default class LightBulb {
         `Sending message ${TURN_ON_LIGHTBULB} to ${this.friendlyName} using topic: ${topic}`
       );
       await this.client.publish(topic, TURN_ON_LIGHTBULB);
+
+      this.state = 'ON';
     } catch (error) {
       console.log('Unable to turn on the light', error);
     }
@@ -63,6 +92,8 @@ export default class LightBulb {
         `Sending message ${TURN_OFF_LIGHTBULB} to ${this.friendlyName} using topic: ${topic}`
       );
       await this.client.publish(topic, TURN_OFF_LIGHTBULB);
+
+      this.state = 'OFF';
     } catch (error) {
       console.log('Unable to turn off the light', error);
     }

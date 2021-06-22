@@ -3,10 +3,11 @@ import { getSubscribeTopic } from '../../helpers/topics';
 export default class WirelessWallSwitchDouble {
   connectedDevices = {};
 
-  constructor(friendlyName, client) {
+  constructor({ deviceName, friendlyName, client }) {
     console.log(`Init WirelessWallSwitchDouble - ${friendlyName}`);
 
-    this.name = friendlyName;
+    this.name = deviceName;
+    this.friendlyName = friendlyName;
     this.client = client;
 
     this.subscribeToMqtt();
@@ -38,15 +39,15 @@ export default class WirelessWallSwitchDouble {
   }
 
   initOnMessage() {
-    const friendlyName = this.friendlyName;
-
     this.client.on('message', (topic, message) => {
       if (topic !== getSubscribeTopic(this.name)) {
         return;
       }
 
       const parsedMessage = JSON.parse(message.toString());
-      console.log(`${friendlyName} received message: ${message.toString()}`);
+      console.log(
+        `${this.friendlyName} received message: ${message.toString()}`
+      );
 
       const { action } = parsedMessage;
       if (!(action in this.connectedDevices)) {
