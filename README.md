@@ -17,9 +17,9 @@ https://www.zigbee2mqtt.io/getting_started/running_zigbee2mqtt.html#6-for-later-
 
 Check application is running:
 
-# You should see HomeAutomation in the list
-
+```
 pm2 ls
+```
 
 Other usefull commands:
 
