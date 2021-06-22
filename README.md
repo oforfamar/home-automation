@@ -1,6 +1,10 @@
 # home-automation
 
-Check service is running on PI:
+I started this project because i wanted to play around with home automation and because some of the Xiaomi devices i bought were only working with the China server or were having a huge delay when executing the commands.
+
+Huge thank you to [Koenkk](https://github.com/Koenkk) for his wonderful [Zigbee2mqtt](https://github.com/koenkk/zigbee2mqtt) library that made it all possible.
+
+Check service is running on machine:
 
 ```
 systemctl status zigbee2mqtt.service
