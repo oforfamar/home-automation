@@ -5,7 +5,11 @@ export const TURN_ON_RELAY_L1 = JSON.stringify({ state_l1: 'ON' });
 export const TURN_OFF_RELAY_L1 = JSON.stringify({ state_l1: 'OFF' });
 export const TURN_ON_RELAY_L2 = JSON.stringify({ state_l2: 'ON' });
 export const TURN_OFF_RELAY_L2 = JSON.stringify({ state_l2: 'OFF' });
-export const TURN_ON_LIGHTBULB = JSON.stringify({ state: 'ON', transition: 0 });
+export const TURN_ON_LIGHTBULB = JSON.stringify({
+  state: 'ON',
+  transition: 0,
+  brightness: '255'
+});
 export const TURN_OFF_LIGHTBULB = JSON.stringify({
   state: 'OFF',
   transition: 0
